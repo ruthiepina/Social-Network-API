@@ -4,7 +4,9 @@
 
 ## Description
 
-An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.
+An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. This app uses the MongoDB database structure, Express.js for routing, the Mongoose ODM, and JavaScript Date object to format timestamps. 
+
+Insomnia Core is used to demonstrate the backend functionality and how the MongoDB structure helps create a database thats quick to set up.
 
 ## Table of Contents
 
