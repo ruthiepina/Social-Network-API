@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const {
+   //
    getAllUsers,
    getUserById,
    createUser,
@@ -12,7 +13,7 @@ const {
 } = require("../../controllers/user-controller");
 
 // Set up GET all and POST at /api/users
-router //
+router
    .route("/") //
    .get(getAllUsers)
    .post(createUser)
