@@ -2,8 +2,7 @@ const { User, Thought } = require("../models");
 
 const userController = {
    //* GET all users
-   getAllUsers(req, res) {
-      ``;
+   getAllUsers(req, res) {``
       User.find({})
          .populate({
             path: "thoughts",
@@ -11,7 +10,7 @@ const userController = {
          })
          .select("-__v") //
          .sort({ _id: -1 })
-         .then((dbUserData) => res.JSON(dbUserData))
+         .then((dbUserData) => res.json(dbUserData))
          .catch((err) => {
             res.status(400).json(err);
          });
@@ -39,6 +38,7 @@ const userController = {
 
    //* POST to add a user to db
    createUser({ body }, res) {
+      console.log(body);
       User.create(body)
          .then((dbUserData) => res.json(dbUserData))
          .catch((err) => res.status(400).json(err));
@@ -60,14 +60,24 @@ const userController = {
          .catch((err) => res.status(400).json(err));
    },
 
-   //* DELETE user from db
+   //* DELETE user from db by id and its thoughts
    deleteUser({ params }, res) {
-      User.findOneAndDelete({ _id: params.id })
+      User.findOne({ _id: params.id })
          .then((dbUserData) => {
             if (!dbUserData) {
-               return res.status(404).json({ message: "User not found." });
+               res.status(404).json({ message: "User not found." });
+               return;
             }
-            res.json(dbUserData);
+            return Thought.deleteMany({ _id: { $in: dbUserData.thoughts } });
+         })
+         .then((dbUserData) => {
+            User.findOneAndDelete({ _id: params.id })
+               .then((dbUserData) => {
+                  res.json(dbUserData);
+               })
+               .catch((err) => {
+                  res.status(400).json(err);
+               });
          })
          .catch((err) => res.status(400).json(err));
    },

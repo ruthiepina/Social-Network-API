@@ -35,7 +35,8 @@ const ThoughtSchema = new Schema(
       thoughtText: {
          type: String,
          required: "Please enter your thought",
-         validate: [({ length }) => length >= 1 && length <= 280, "Thought should be more than one character!"],
+         min: 1,
+         max: 280,
       },
       username: {
          type: String,

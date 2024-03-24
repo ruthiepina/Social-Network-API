@@ -12,20 +12,21 @@ const {
    removeFriend,
 } = require("../../controllers/user-controller");
 
-// Set up GET all and POST at /api/users
+//* GET all and POST at /api/users
 router
    .route("/") //
    .get(getAllUsers)
    .post(createUser)
    .delete(deleteAllUsers);
 
-// Set up GET one, PUT, and DELETE at /api/users/:id
+//* GET one, PUT, and DELETE at /api/users/:id
 router //
    .route("/:id")
    .get(getUserById)
    .put(updateUser)
    .delete(deleteUser);
 
+//* POST to add one friend DELETE to remove friend at /api/users/:userId/friends/:friendId
 router //
    .route("/:userId/friends/:friendId")
    .post(addFriend)
