@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 3001;
 // let db;
 // const dbName = "socialNetworkDB";
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -26,4 +25,6 @@ mongoose
 
 mongoose.set("debug", true);
 
-app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+mongoose.connection.on("open", () => {
+   app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+});

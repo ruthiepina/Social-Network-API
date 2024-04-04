@@ -30,7 +30,7 @@ router //
 router //
    .route("/:thoughtId")
    .get(getThoughtById)
-   .post(updateThoughtById)
+   .put(updateThoughtById)
    .delete(removeThoughtById);
 
 router //

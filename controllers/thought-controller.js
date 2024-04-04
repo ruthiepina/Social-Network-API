@@ -5,7 +5,7 @@ const thoughtController = {
    getAllThoughts({ body }, res) {
       Thought.find({})
          .then((dbThoughtData) => res.JSON(dbThoughtData))
-         .catch((err) => res.status(404).json(err));
+         .catch((err) => res.status(400).json(err));
    },
 
    //* GET thought by id
@@ -109,6 +109,7 @@ const thoughtController = {
          .catch((err) => res.status(404).json(err));
    },
 
+   //* ADD a Reaction
    addReaction({ params, body }, res) {
       Thought.findOneAndUpdate(
          //
