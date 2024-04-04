@@ -42,7 +42,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 [GitHub Repo for App](https://github.com/ruthiepina/Social-Network-API)
 
-[Walkthrough Video of App]()
+[Walkthrough Video of App](https://drive.google.com/file/d/17Y7rvRzAVfiD33Ro7TP0XMASbSB6nv0u/view)
 
 ## License
 
